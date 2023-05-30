@@ -12,20 +12,20 @@
 #	- open_pdk : sky130 PDK
 #	- xschem   : schematic editor
 # 
-# All of the tools will be installed in the directory
-# 'tools' and the git repos will be cloned to the 
-# directory 'repos'.
+# All of the tools, except ngspice will be installed 
+# in the directory  'tools' and the git repos will be 
+# cloned to the  directory 'repos'.
 #
 # The '~/.bashrc' file will be updated to include the
-# 'tools' directory in the path.
+# 'tools' directory in the path and the 'PDK_ROOT'.
 #
 # ------------------------------------------------------
 
-ICDIR=$(pwd)
 TOOLSDIR=$(pwd)/tools
 mkdir -p tools
 mkdir -p repos
 grep -qxF "PATH=\$PATH:$TOOLSDIR/bin" ~/.bashrc || echo "PATH=\$PATH:$TOOLSDIR/bin" >> ~/.bashrc
+grep -qxF "export PDK_ROOT=$TOOLSDIR/share/pdk" ~/.bashrc || echo "export PDK_ROOT=$TOOLSDIR/share/pdk" >> ~/.bashrc
 export PATH=$PATH:$TOOLSDIR/bin
 
 # -- STEP 0 : INSTALL DEPENDENCIES --
@@ -68,7 +68,7 @@ echo "--- INSTALLING OPEN_PDK ---\n\n"
 git clone https://github.com/RTimothyEdwards/open_pdks.git
 cd open_pdks
 ./configure --prefix=$TOOLSDIR --enable-sky130-pdk
-make
+make -j $(nproc)
 sudo make install
 cd ..
 
@@ -78,7 +78,7 @@ echo "--- INSTALLING XSCHEM ---\n\n"
 git clone https://github.com/StefanSchippers/xschem.git
 cd xschem
 ./configure --prefix=$TOOLSDIR
-make
+make -j $(nproc)
 sudo make install
 cd ../..
 
