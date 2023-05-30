@@ -15,11 +15,11 @@
 # ------------------------------------------------------
 
 ICDIR=$(pwd)
-mkdir tools
+mkdir -p tools
 TOOLSDIR=$(pwd)/tools
-mkdir repos
-grep -qxF "export PATH=\$PATH:$TOOLSDIR/bin" ~/.profile || echo "export PATH=\$PATH:$TOOLSDIR/bin" >> ~/.profile
-. ~/.profile
+mkdir -p repos
+grep -qxF "PATH=\$PATH:$TOOLSDIR/bin" ~/.bashrc || echo "PATH=\$PATH:$TOOLSDIR/bin" >> ~/.bashrc
+export PATH=$PATH:$TOOLSDIR/bin
 
 # -- STEP 0 : INSTALL DEPENDENCIES --
 
