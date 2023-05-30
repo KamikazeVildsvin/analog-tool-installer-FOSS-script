@@ -17,5 +17,5 @@ The tools will then be placed in a directory name `tools` and the `~/.bashrc` fi
 
 ### Build Notes
 The build and make process of the `open_pdk` install may need to be performed twice, because of an error with `miniconda`.
-The make process also takes a lot of time so if no errors ocur, just wait.
+The make process also takes a lot of time so if no errors occur, just wait.
 It took about four to five hours on my Raspberry Pi 400 with Raspberry Pi OS.
