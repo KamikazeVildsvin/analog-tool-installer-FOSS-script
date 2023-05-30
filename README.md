@@ -5,7 +5,8 @@ The tools include:
 - `magic`
 - `open_pdks` 
 - `xschem`
-Currently still in development.
+
+The script is currently still in development, but should be functioning.
 
 ### Build Notes
 The build and make process of the `open_pdk` install may need to be performed twice, because of an error with `miniconda`.
