@@ -11,12 +11,19 @@
 #	- magic    : layout tool
 #	- open_pdk : sky130 PDK
 #	- xschem   : schematic editor
+# 
+# All of the tools will be installed in the directory
+# 'tools' and the git repos will be cloned to the 
+# directory 'repos'.
+#
+# The '~/.bashrc' file will be updated to include the
+# 'tools' directory in the path.
 #
 # ------------------------------------------------------
 
 ICDIR=$(pwd)
-mkdir -p tools
 TOOLSDIR=$(pwd)/tools
+mkdir -p tools
 mkdir -p repos
 grep -qxF "PATH=\$PATH:$TOOLSDIR/bin" ~/.bashrc || echo "PATH=\$PATH:$TOOLSDIR/bin" >> ~/.bashrc
 export PATH=$PATH:$TOOLSDIR/bin
